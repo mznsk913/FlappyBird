@@ -13,6 +13,8 @@
 		E7DB21A82AF5DDE300637CD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DB21A62AF5DDE300637CD8 /* Main.storyboard */; };
 		E7DB21AA2AF5DDE400637CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7DB21A92AF5DDE400637CD8 /* Assets.xcassets */; };
 		E7DB21AD2AF5DDE400637CD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7DB21AB2AF5DDE400637CD8 /* LaunchScreen.storyboard */; };
+		E7DB21B52AF5DFC000637CD8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7DB21B42AF5DFC000637CD8 /* GameScene.swift */; };
+		E7DB21E12AF65EE900637CD8 /* sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7DB21E02AF65EE900637CD8 /* sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		E7DB21A92AF5DDE400637CD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7DB21AC2AF5DDE400637CD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7DB21AE2AF5DDE400637CD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7DB21B42AF5DFC000637CD8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		E7DB21E02AF65EE900637CD8 /* sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 				E7DB21A42AF5DDE300637CD8 /* ViewController.swift */,
 				E7DB21A62AF5DDE300637CD8 /* Main.storyboard */,
 				E7DB21A92AF5DDE400637CD8 /* Assets.xcassets */,
+				E7DB21B42AF5DFC000637CD8 /* GameScene.swift */,
 				E7DB21AB2AF5DDE400637CD8 /* LaunchScreen.storyboard */,
 				E7DB21AE2AF5DDE400637CD8 /* Info.plist */,
+				E7DB21E02AF65EE900637CD8 /* sound.mp3 */,
 			);
 			path = FlappyBird;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DB21E12AF65EE900637CD8 /* sound.mp3 in Resources */,
 				E7DB21AD2AF5DDE400637CD8 /* LaunchScreen.storyboard in Resources */,
 				E7DB21AA2AF5DDE400637CD8 /* Assets.xcassets in Resources */,
 				E7DB21A82AF5DDE300637CD8 /* Main.storyboard in Resources */,
@@ -140,6 +147,7 @@
 			files = (
 				E7DB21A52AF5DDE300637CD8 /* ViewController.swift in Sources */,
 				E7DB21A12AF5DDE300637CD8 /* AppDelegate.swift in Sources */,
+				E7DB21B52AF5DFC000637CD8 /* GameScene.swift in Sources */,
 				E7DB21A32AF5DDE300637CD8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,8 +300,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,9 +309,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.saki.mizuno.FlappyBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,8 +330,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +339,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.saki.mizuno.FlappyBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
