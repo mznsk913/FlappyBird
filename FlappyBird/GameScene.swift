@@ -369,7 +369,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bestScoreLabelNode.text = "Best Score:\(bestScore)"
                 userDefaults.set(bestScore, forKey: "BEST")
             }
-        } else if (contact.bodyA.categoryBitMask == itemCategory || contact.bodyB.categoryBitMask == itemCategory) {
+        } else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
             //elesif 追加 itemとヒットした時にアイテムスコア+1アイテムを消す&効果音
             // アイテムスコアカウント用の透明な壁と衝突した
             print("ItemScoreUp")
