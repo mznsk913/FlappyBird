@@ -263,7 +263,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // カテゴリー設定
         bird.physicsBody?.categoryBitMask = birdCategory
         bird.physicsBody?.collisionBitMask = groundCategory | wallCategory
-        bird.physicsBody?.contactTestBitMask = groundCategory | wallCategory | scoreCategory
+        bird.physicsBody?.contactTestBitMask = groundCategory | wallCategory | scoreCategory | itemCategory
 
         // 衝突した時に回転させない
         bird.physicsBody?.allowsRotation = false
@@ -318,7 +318,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             item.zPosition = -50 // 雲より手前、地面より奥
 
             // 下側のote,に物理体を設定する
-            item.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())
+            item.physicsBody = SKPhysicsBody(circleOfRadius: itemTexture.size().width / 2)
             item.physicsBody?.categoryBitMask = self.itemCategory
             item.physicsBody?.isDynamic = false
 
@@ -356,7 +356,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
 
-        if (contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory {
+        if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
+            
+            //elesif 追加 itemとヒットした時にアイテムスコア+1アイテムを消す&効果音
+            // アイテムスコアカウント用の透明な壁と衝突した
+            print("ItemScoreUp")
+            itemScore += 1
+            itemScoreLabelNode.text = "ItemScore:\(itemScore)"
+            
+            if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory {
+                contact.bodyA.node?.removeFromParent()
+            }
+            if (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
+                contact.bodyB.node?.removeFromParent()
+            }
+
+            // itemの画像を読み込む
+            let itemTexture = SKTexture(imageNamed: "item")
+            itemTexture.filteringMode = .linear
+            // アイテム取得音
+            run(sound)
+        }else if (contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory {
             // スコアカウント用の透明な壁と衝突した
             print("ScoreUp")
             score += 1
@@ -369,23 +389,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bestScoreLabelNode.text = "Best Score:\(bestScore)"
                 userDefaults.set(bestScore, forKey: "BEST")
             }
-        } else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
-            //elesif 追加 itemとヒットした時にアイテムスコア+1アイテムを消す&効果音
-            // アイテムスコアカウント用の透明な壁と衝突した
-            print("ItemScoreUp")
-            itemScore += 1
-            itemScoreLabelNode.text = "ItemScore:\(itemScore)"
-            
-            //アイテムを消す //全部消えちゃう
-            itemNode.isHidden = true
-            
-            // itemの画像を読み込む
-            let itemTexture = SKTexture(imageNamed: "item")
-            itemTexture.filteringMode = .linear
-            // アイテム取得音
-            run(sound)
-        }
-        else {
+        } else {
             // 壁か地面と衝突した
             print("GameOver")
 
